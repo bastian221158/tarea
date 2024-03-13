@@ -1,0 +1,259 @@
+#Importamos funciones del sistema operativo
+import os
+#Creamos la función para la decoración y se vea mejor presentado
+def decoracion():
+    return("=========================================================")
+#Creamos la función para limpiar la pantalla presionando enter
+def limpiarPantalla():
+    #Le indicamos al usuario que debe presionar enter para continuar. 
+    input("Ingrese Enter para continuar...")
+    os.system("cls")
+#Creamos la función limpiar la pantalla completa 
+def limpiarPantalla_completa():
+    #Limpia la pantalla completa 
+    os.system("cls")
+#Creamos los valores determinados para el menú
+opcionA = 1                                           #VARIABLES
+opcionB = 2
+opcionC = 3
+#Los valores definidos por parte de la clienta        #PARAMETROS DE FUNCION
+valorCristalNormal=10                                 #VARIABLES
+valorCristalOscuro=20
+valorCristalTemplado=30
+valorFondoBlancoAndNegro=15
+valorFondoTexturizado=25
+valorMarcoClaro=5
+valorMarcoOscuro=10
+valorMarcoTexturizado=20
+#Variables para largo y ancho con valores predefinidos en 0
+largo=0                                               #VARIABLES
+ancho=0
+#Variables de valores finales predefinidos en 0
+valorFinalCristal=0                                   #VARIABLES
+valorFinalFondo=0
+valorTotalMarco=0
+valorFinalDelCuadro=0
+#Variables para guardar el nombre de los materiales seleccionados 
+marco_seleccionado=""                                 #VARIABLES
+cristal_seleccionado=""
+fondo_seleccionado=""
+#Creamos la función para los cálculos del marco
+def pedir_marco():                                                                #FUNCION
+    global largo, ancho, valorTotalMarco, marco_seleccionado
+    #Creamos la función while true (try) para validar los datos.
+    while True:                                                                   #ESTRUCTURA ITERATIVA
+        try:
+            #Le pedimos al usuario que escoja una opción.
+            marco = int(input("Ingrese una opción: "))
+            #Creamos validación para que solo se pueda ingresar una opción dentro del rango
+            if (marco <= 3 and marco > 0):
+                limpiarPantalla_completa()
+                break
+            else:
+                #Imprimimos la decoración para mejor presentación.
+                print(decoracion())
+                #Le pedimos al usuario que ingrese una opción válida. 
+                print("Ingrese una opción válida")
+        except ValueError:
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            #le indicamos al usuario que la opción no es válida. 
+            print("Valor no válido. Intente nuevamente.")
+    #Creamos la condición para la opción A.
+    if marco == opcionA:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        print("Usted ha elegido el marco claro")
+        marco_seleccionado="Marco Claro"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos la condición para la opción B.
+    elif marco == opcionB:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        print("Usted ha elegido el marco oscuro")
+        marco_seleccionado="Marco Oscuro"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos la condición para la opción C.
+    elif marco == opcionC:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        print("Usted ha elegido el marco con textura")
+        marco_seleccionado="Marco Con Textura"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos la función while true (try) para validar los datos.
+    while True:
+        try:                                                                #FUNCION
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            #Pedimos al usuario que ingrese el largo.
+            largo = float(input("Ingrese el Largo: "))
+            break
+        except ValueError:
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            print("Valor no válido. Intente nuevamente.")
+    while True:
+        try:
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            #Pedimos al usuario que ingrese el ancho.
+            ancho = float(input("Ingrese el Ancho: "))
+            limpiarPantalla_completa()
+            break
+        except ValueError:
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            print("Valor no válido. Intente nuevamente.")
+    limpiarPantalla_completa()
+    #Imprimimos la decoración para mejor presentación.
+    print(decoracion())
+    #Confirmamos y mostramos al usuario el largo y ancho que ingreso. 
+    print("El largo del cuadro será:", largo, "y el ancho será:", ancho)
+    #Imprimimos la decoración para mejor presentación.
+    print(decoracion())
+    limpiarPantalla()
+    #Creamos la fórmula para sacar el área del marco.
+    areaMarco=((largo*ancho)*10)
+    #Creamos las condiciones para cada valor dependiendo de lo que se escoja.
+    if marco == opcionA:                                                                        #IF
+        valorTotalMarco=(areaMarco*valorMarcoClaro)
+    elif marco == opcionB:
+        valorTotalMarco=(areaMarco*valorMarcoOscuro)
+    else:
+        valorTotalMarco=(areaMarco*valorMarcoTexturizado)
+    #Devolvemos los valores finales de largo y guardamos el valor total del marco
+    return largo, ancho, valorTotalMarco
+#creamos la función para pedir el tipo de cristal 
+def pedir_cristal():
+    global valorFinalCristal, cristal_seleccionado
+#Creamos la función while true (try) para validar los datos.
+    while True:
+        try:
+            #Creamos la variable para ingresar la opción de cristal 
+            cristal = int(input("Elija una opción: "))
+            #Creamos las condiciones para las opciones 
+            if (cristal <= 3 and cristal > 0):                                                 #IF
+                limpiarPantalla_completa()
+                break
+            else:
+                #Imprimimos la decoración para mejor presentación.
+                print(decoracion())
+                print("Ingrese una opción válida")
+        except ValueError:
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            print("Valor no válido. Intente nuevamente.")
+    #creamos la condición para la opción A.
+    if cristal == opcionA:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le mostramos al usuario la opción que escogió. 
+        print("Usted ha elegido el Cristal templado")
+        cristal_seleccionado="Cristal Templado"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos la condición para la opción B.
+    elif cristal == opcionB:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le mostramos al usuario la opción que escogió. 
+        print("Usted ha elegido el Cristal Oscuro")
+        cristal_seleccionado="Cristal Oscuro"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos la condición para la opción C.
+    elif cristal == opcionC:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le mostramos al usuario la opción que escogió. 
+        print("Usted ha elegido el Cristal Normal")
+        cristal_seleccionado="Cristal Normal"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos las condiciones para cada valor seleccionado, y dependiendo de lo que escoge se aplica.
+    if cristal==opcionA:                                                                              #IF
+        valorFinalCristal=(((largo-1)*(ancho-1))*valorCristalTemplado)
+    elif cristal==opcionB:
+        valorFinalCristal=(((largo-1)*(ancho-1))*valorCristalOscuro)
+    else:
+        valorFinalCristal=(((largo-1)*(ancho-1))*valorCristalNormal)
+    #Imprimimos la decoración para mejor presentación.
+    print(decoracion())
+    print("Ahora por favor elija el fondo que desea en su cuadro")
+    #Devolver el valor final del cristal
+    return valorFinalCristal
+#Creamos la función para pedir el fondo del cuadro.
+def pedir_fondo():
+    global valorFinalFondo, valorFinalDelCuadro, fondo_seleccionado
+#Creamos la función while true (try) para validar los datos.
+    while True:                                                         #ESTRUCTURA ITERATIVA
+        try:
+            #Le pedimos al usuario que escoja una opción. 
+            fondo = int(input("Elija una opción: "))
+            #Imprimimos la decoración para mejor presentación.
+            print(decoracion())
+            #Creamos las condiciones dependiendo de lo que escoja el usuario.
+            if (fondo <= 3 and fondo > 0):
+                limpiarPantalla_completa()
+                break
+            else:
+                #Imprimimos la decoración para mejor presentación.
+                print(decoracion())
+                #le pedimos al usuario que ingrese una opción válida.
+                print("Ingrese una opción válida")
+        except ValueError:
+                #Imprimimos la decoración para mejor presentación.
+                print(decoracion())
+                #le pedimos al usuario que ingrese una opción válida.
+                print("Valor no válido. Intente nuevamente.")
+    if fondo == opcionA:                                                            
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le mostramos al usuario la opción seleccionada.  
+        print("Usted ha elegido el Fondo Blanco")
+        fondo_seleccionado="Fondo Blanco"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    elif fondo == opcionB:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le indicamos al usuario la opción seleccionada. 
+        print("Usted ha elegido el Fondo Negro")
+        fondo_seleccionado="Fondo Negro"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    elif fondo == opcionC:
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        #Le indicamos al usuario la opción seleccionada.
+        print("Usted ha elegido el Fondo Texturizado")
+        fondo_seleccionado="Fondo Texturizado"
+        #Imprimimos la decoración para mejor presentación.
+        print(decoracion())
+        limpiarPantalla()
+    #Creamos las condiciones para cada opción.
+    if fondo==opcionA or fondo==opcionB:
+        valorFinalFondo=(valorFondoBlancoAndNegro*((largo-1)*(ancho-1)))
+    else:
+        valorFinalFondo=(valorFondoTexturizado*((largo-1)*(ancho-1)))
+    valorFinalDelCuadro=(round(valorFinalCristal+valorFinalFondo+valorTotalMarco))
+    return valorFinalDelCuadro, valorFinalFondo
+#creamos la función para el valor final del cuadro.
+def valor_final_del_cuadro():
+    global valor_final_del_cuadro
+    #Imprimimos la decoración para mejor presentación.
+    print(decoracion())
+    print("El valor estimado seria: ",valorFinalDelCuadro)
+    #Imprimimos la decoración para mejor presentación.
+    print(decoracion())
